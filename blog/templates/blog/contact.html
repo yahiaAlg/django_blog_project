@@ -1,6 +1,7 @@
 {% extends "blog/base.html" %}
 {% load django_bootstrap5 %}
 {% block content %}
+{% include "blog/partials/_errors.html" with  errors=form.errors  %}
 <div class="container mt-5">
     <h1>Contact Us</h1>
     <form method="post" action="{% url 'blog:contact' %}">

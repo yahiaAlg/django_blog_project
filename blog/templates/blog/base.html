@@ -7,12 +7,14 @@
     <title>{% block title %}My Blog{% endblock %}</title>
     {% bootstrap_css %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    {% block styles %}{% endblock styles %}
 </head>
 <body>
     {% include "blog/partials/_header.html" %}
-    <main>
+    {% include "blog/partials/_messages.html" with messages=messages%}
+    <div class="container mt-5">
         {% block content %}{% endblock %}
-    </main>
+    </div>
     {% include "blog/partials/_footer.html" %}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     {% bootstrap_javascript %}
