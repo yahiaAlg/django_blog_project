@@ -1,102 +1,103 @@
 {% extends "blog/base.html" %}
 {% load django_bootstrap5 %}
 {% load blog_tags %}
+{% block title %}{{post.slug}}{% endblock title %}
 {% block content %}
-<div class="row">
-    <main class="col-md-8">
-        {% include "blog/partials/_errors.html" with  errors=forms.errors  %}
-        <div class="container">
-            <h1 class="mb-4">{{ post.title }}</h1>
-            <p class="text-muted">Published on {{ post.publish|date:"F j, Y" }} by {{ post.author }}</p>
-            <div class="content mb-5">
-                {{ post.content|markdown }}
+    <div class="row">
+        <main class="col-md-8">
+            {% include "blog/partials/_errors.html" with  errors=forms.errors  %}
+            <div class="container">
+                <h1 class="mb-4">{{ post.title }}</h1>
+                <p class="text-muted">Published on {{ post.publish|date:"F j, Y" }} by {{ post.author }}</p>
+                <div class="content mb-5">
+                    {{ post.content|markdown }}
+                </div>
             </div>
+        </main>
+        <aside class="col-md-4">
+            {% include "blog/partials/_sidebar.html" %}
+        </aside>
+    </div>
+
+    <!-- Tags Section -->
+    <div class="tags mb-5">
+        <h5>Tags:</h5>
+        {% for tag in post.tags.all %}
+        <a class="badge text-decoration-none bg-primary" href="{% url "blog:post_list_by_tag" tag.slug %}">{{ tag.name }}</a>
+        {% endfor %}
+    </div>
+
+    <!-- Share Form Section -->
+    <div class="share-form mb-5">
+        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#shareForm" aria-expanded="false" aria-controls="shareForm">
+            Share this post
+        </button>
+        <div class="collapse mt-3" id="shareForm">
+            <form method="post" action="{% url 'blog:share_post' post.pk %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="senderEmail" class="form-label">Your Email</label>
+                    <input type="email" class="form-control" id="senderEmail" name="sender_email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="recipientEmail" class="form-label">Recipient's Email</label>
+                    <input type="email" class="form-control" id="recipientEmail" name="recipient_email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
         </div>
-    </main>
-    <aside class="col-md-4">
-        {% include "blog/partials/_sidebar.html" %}
-    </aside>
-        <!-- Tags Section -->
-        <div class="tags mb-5">
-            <h5>Tags:</h5>
-            {% for tag in post.tags.all %}
-            <a class="badge text-decoration-none bg-primary" href="{% url "blog:post_list_by_tag" tag.slug %}">{{ tag.name }}</a>
-            {% endfor %}
-        </div>
-    
-        <!-- Share Form Section -->
-        <div class="share-form mb-5">
-            <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#shareForm" aria-expanded="false" aria-controls="shareForm">
-                Share this post
-            </button>
-            <div class="collapse mt-3" id="shareForm">
-                <form method="post" action="{% url 'blog:share_post' post.pk %}">
-                    {% csrf_token %}
-                    <div class="mb-3">
-                        <label for="senderEmail" class="form-label">Your Email</label>
-                        <input type="email" class="form-control" id="senderEmail" name="sender_email" required>
+    </div>
+
+    <!-- Recommended Posts Section -->
+    <div class="recommended-posts mb-5">
+        <h2>Recommended Posts</h2>
+        <div class="row">
+            {% for similar_post in similar_posts %}
+            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ similar_post.title }}</h5>
+                        <p class="card-text">{{ similar_post.content|truncatewords:20 }}</p>
+                        <a href="{{ similar_post.get_absolute_url }}" class="btn btn-primary">Read More</a>
                     </div>
-                    <div class="mb-3">
-                        <label for="recipientEmail" class="form-label">Recipient's Email</label>
-                        <input type="email" class="form-control" id="recipientEmail" name="recipient_email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send</button>
-                </form>
-            </div>
-        </div>
-    
-        <!-- Recommended Posts Section -->
-        <div class="recommended-posts mb-5">
-            <h2>Recommended Posts</h2>
-            <div class="row">
-                {% for similar_post in similar_posts %}
-                <div class="col-md-3 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ similar_post.title }}</h5>
-                            <p class="card-text">{{ similar_post.content|truncatewords:20 }}</p>
-                            <a href="{{ similar_post.get_absolute_url }}" class="btn btn-primary">Read More</a>
-                        </div>
-                        <div class="card-footer text-muted">
-                            Published on {{ similar_post.publish|date:"F j, Y" }} by {{ similar_post.author }}
-                        </div>
+                    <div class="card-footer text-muted">
+                        Published on {{ similar_post.publish|date:"F j, Y" }} by {{ similar_post.author }}
                     </div>
                 </div>
-                {% endfor %}
-            </div>
-        </div>
-    
-        <!-- Comment Section -->
-        <div class="comments">
-            <h2>Comments</h2>
-            <form method="post" action="{{ post.get_absolute_url }}">
-                {% csrf_token %}
-                {% bootstrap_form form %}
-                <button type="submit" class="btn btn-primary">Add Comment</button>
-            </form>
-    
-            <hr>
-    
-            {% for comment in post.comments.all %}
-            <div class="comment mb-3">
-                <p><strong>{{ comment.email }}</strong> said:</p>
-                <p>{{ comment.content }}</p>
-                <p class="text-muted">{{ comment.publish|date:"F j, Y, g:i a" }}</p>
-                <button class="btn btn-outline-success btn-sm like-btn" data-id="{{ comment.id }}">
-                    <i class="fas fa-thumbs-up"></i> <span class="like-count">{{ comment.likes_count }}</span>
-                </button>
-                <button class="btn btn-outline-danger btn-sm dislike-btn" data-id="{{ comment.id }}">
-                    <i class="fas fa-thumbs-down"></i>
-                </button>
             </div>
             {% endfor %}
         </div>
     </div>
-    
+
+    <!-- Comment Section -->
+    <div class="comments">
+        <h2>Comments</h2>
+        <form method="post" action="{{ post.get_absolute_url }}">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <button type="submit" class="btn btn-primary">Add Comment</button>
+        </form>
+
+        <hr>
+
+        {% for comment in post.comments.all %}
+        <div class="comment mb-3">
+            <p><strong>{{ comment.email }}</strong> said:</p>
+            <p>{{ comment.content }}</p>
+            <p class="text-muted">{{ comment.publish|date:"F j, Y, g:i a" }}</p>
+            <button class="btn btn-outline-success btn-sm like-btn" data-id="{{ comment.id }}">
+                <i class="fas fa-thumbs-up"></i> <span class="like-count">{{ comment.likes_count }}</span>
+            </button>
+            <button class="btn btn-outline-danger btn-sm dislike-btn" data-id="{{ comment.id }}">
+                <i class="fas fa-thumbs-down"></i>
+            </button>
+        </div>
+        {% endfor %}
+    </div>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.like-btn').forEach(button => {

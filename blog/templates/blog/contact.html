@@ -1,13 +1,21 @@
-{% extends "blog/base.html" %}
+{% extends "blog/base.html" %} 
 {% load django_bootstrap5 %}
+{% block title %}Contact{% endblock title %} 
 {% block content %}
-{% include "blog/partials/_errors.html" with  errors=form.errors  %}
-<div class="container mt-5">
-    <h1>Contact Us</h1>
-    <form method="post" action="{% url 'blog:contact' %}">
-        {% csrf_token %}
-        {% bootstrap_form  form %}
+{% include "blog/partials/_errors.html" with errors=form.errors %}
+<div class="row">
+  <main class="col-md-8">
+    {% include "blog/partials/_errors.html" with errors=forms.errors %}
+    <div class="container">
+      <h1>Contact Us</h1>
+      <form method="post" action="{% url 'blog:contact' %}">
+        {% csrf_token %} {% bootstrap_form form %}
         <button type="submit" class="btn btn-primary">Send</button>
-    </form>
+      </form>
+    </div>
+  </main>
+  <aside class="col-md-4">
+    {% include "blog/partials/_sidebar.html" %}
+  </aside>
 </div>
 {% endblock %}

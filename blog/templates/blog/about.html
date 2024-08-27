@@ -1,9 +1,24 @@
-{% extends "blog/base.html" %}
-
+{% extends "blog/base.html" %} 
+{% block title %}About{% endblock title %}
 {% block content %}
-<div class="container mt-5">
-    <h1>About Us</h1>
-    <p>Welcome to our blog! We are passionate about sharing insightful articles on various topics. Our team of writers is dedicated to providing high-quality content to our readers.</p>
-    <p>Stay tuned for more updates and feel free to reach out to us through our contact page.</p>
+<div class="row">
+  <main class="col-md-8">
+    {% include "blog/partials/_messages.html" with messages=messages %}
+    <div class="container">
+      <h1>About Us</h1>
+      <p>
+        Welcome to our blog! We are passionate about sharing insightful articles
+        on various topics. Our team of writers is dedicated to providing
+        high-quality content to our readers.
+      </p>
+      <p>
+        Stay tuned for more updates and feel free to reach out to us through our
+        contact page.
+      </p>
+    </div>
+  </main>
+  <aside class="col-md-4">
+    {% include "blog/partials/_sidebar.html" %}
+  </aside>
 </div>
 {% endblock %}
