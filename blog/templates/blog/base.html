@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load django_bootstrap5 %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Blog{% endblock %}</title>
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    {% include "blog/partials/_header.html" %}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    {% include "blog/partials/_footer.html" %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {% bootstrap_javascript %}
+
+</body>
+</html>

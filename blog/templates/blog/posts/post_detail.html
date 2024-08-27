@@ -1,0 +1,79 @@
+{% extends "blog/base.html" %}
+{% load django_bootstrap5 %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">{{ post.title }}</h1>
+    <p class="text-muted">Published on {{ post.publish|date:"F j, Y" }} by {{ post.author }}</p>
+    <div class="content mb-5">
+        {{ post.content|safe }}
+    </div>
+
+    <!-- Comment Section -->
+    <div class="comments">
+        <h2>Comments</h2>
+        <form method="post" action="{{post.get_absolute_url}}">
+            {% csrf_token %}
+            {% bootstrap_form  form %}
+            <button type="submit" class="btn btn-primary">Add Comment</button>
+        </form>
+
+        <hr>
+
+        {% for comment in post.comments.all %}
+        <div class="comment mb-3">
+            <p><strong>{{ comment.email }}</strong> said:</p>
+            <p>{{ comment.content }}</p>
+            <p class="text-muted">{{ comment.publish|date:"F j, Y, g:i a" }}</p>
+            <button class="btn btn-outline-success btn-sm like-btn" data-id="{{ comment.id }}">
+                <i class="fas fa-thumbs-up"></i> <span class="like-count">{{ comment.likes_count }}</span>
+            </button>
+            <button class="btn btn-outline-danger btn-sm dislike-btn" data-id="{{ comment.id }}">
+                <i class="fas fa-thumbs-down"></i>
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.like-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const commentId = this.getAttribute('data-id');
+            fetch(`/like_comment/${commentId}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    this.querySelector('.like-count').textContent = data.likes_count;
+                }
+            });
+        });
+    });
+
+    document.querySelectorAll('.dislike-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const commentId = this.getAttribute('data-id');
+            fetch(`/dislike_comment/${commentId}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    this.closest('.comment').remove();
+                }
+            });
+        });
+    });
+});
+</script>
+{% endblock %}

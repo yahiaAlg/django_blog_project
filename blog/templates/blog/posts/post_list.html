@@ -1,0 +1,24 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Posts</h1>
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.content|truncatewords:30 }}</p>
+                    <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Read More</a>
+                </div>
+                <div class="card-footer text-muted">
+                    Published on {{ post.publish|date:"F j, Y" }} by {{ post.author }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% include "blog/partials/_pagination.html" with page_obj=posts %}
+</div>
+{% endblock %}
