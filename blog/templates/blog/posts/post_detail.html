@@ -8,12 +8,38 @@
         {{ post.content|safe }}
     </div>
 
+    <!-- Share Form Section -->
+    <div class="share-form mb-5">
+        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#shareForm" aria-expanded="false" aria-controls="shareForm">
+            Share this post
+        </button>
+        <div class="collapse mt-3" id="shareForm">
+            <form method="post" action="{% url 'blog:share_post' post.pk %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="senderEmail" class="form-label">Your Email</label>
+                    <input type="email" class="form-control" id="senderEmail" name="sender_email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="recipientEmail" class="form-label">Recipient's Email</label>
+                    <input type="email" class="form-control" id="recipientEmail" name="recipient_email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+        </div>
+    </div>
+
+
     <!-- Comment Section -->
     <div class="comments">
         <h2>Comments</h2>
-        <form method="post" action="{{post.get_absolute_url}}">
+        <form method="post" action="{{ post.get_absolute_url }}">
             {% csrf_token %}
-            {% bootstrap_form  form %}
+            {% bootstrap_form form %}
             <button type="submit" class="btn btn-primary">Add Comment</button>
         </form>
 

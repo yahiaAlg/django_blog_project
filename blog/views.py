@@ -4,6 +4,10 @@ from django.views.generic import ListView
 from django.shortcuts import redirect, render
 from django.shortcuts import get_object_or_404
 
+from django.core.mail import send_mail
+from django.conf import settings
+from .forms import ContactForm
+
 # from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import *
 
@@ -79,13 +83,26 @@ def post_detail(request, year, month, day, slug):
     )
 
 
+def share_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        sender_email = request.POST["sender_email"]
+        recipient_email = request.POST["recipient_email"]
+        message = request.POST["message"]
+        subject = f"Check out this post: {post.title}"
+        message_body = f"Message from {sender_email}:\n\n{message}\n\nRead the post here: {request.build_absolute_uri(post.get_absolute_url())}"
+        send_mail(subject, message_body, sender_email, [recipient_email])
+        return redirect(
+            "blog:post_detail",
+            year=post.publish.year,
+            month=post.publish.month,
+            day=post.publish.day,
+            slug=post.slug,
+        )
+
+
 def about(request):
     return render(request, "blog/about.html")
-
-
-from django.core.mail import send_mail
-from django.conf import settings
-from .forms import ContactForm
 
 
 def contact(request):
