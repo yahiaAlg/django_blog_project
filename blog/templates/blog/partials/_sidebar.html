@@ -5,4 +5,9 @@
 
     <h3>Latest Posts</h3>
     {% show_latest_posts 2 %}
+
+    <hr>
+    <div class="d-flex">
+        <a href="{% url "blog:post_feed" %}" class="link-primary">subscribe to my  blog feed</a>
+    </div>
 </div>

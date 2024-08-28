@@ -1,0 +1,671 @@
+[
+  {
+    "model": "contenttypes.contenttype",
+    "fields": { "app_label": "admin", "model": "logentry" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": { "app_label": "auth", "model": "permission" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": { "app_label": "auth", "model": "group" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": { "app_label": "auth", "model": "user" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": { "app_label": "contenttypes", "model": "contenttype" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": { "app_label": "sessions", "model": "session" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": { "app_label": "blog", "model": "post" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": { "app_label": "blog", "model": "comment" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": { "app_label": "taggit", "model": "tag" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": { "app_label": "taggit", "model": "taggeditem" }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": { "app_label": "sites", "model": "site" }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "3s3psvq2kmj50dgjuyylgc0pwkxmoxe7",
+    "fields": {
+      "session_data": ".eJxVjDkOwjAUBe_iGlneY1PS5wzWXwwOIEeKkwpxd4iUAto3M-8lMmxrzVsvS55YnIUWp98NgR6l7YDv0G6zpLmty4RyV-RBuxxnLs_L4f4dVOj1W7sYjbPGoCEXGW2ygQblSgD0TlHxpDzGVCLGK2nNwXKy2rBVyusBjHh_AMM9NwI:1siupU:N-epnaA1TxHZKeLdSVexI_9Gfj5DIcUXDI4SFa6RPTk",
+      "expire_date": "2024-09-10T11:57:44.870Z"
+    }
+  },
+  { "model": "taggit.tag", "fields": { "name": "Future", "slug": "future" } },
+  {
+    "model": "taggit.tag",
+    "fields": { "name": "Web Development", "slug": "web-development" }
+  },
+  {
+    "model": "taggit.tag",
+    "fields": { "name": "Technology", "slug": "technology" }
+  },
+  { "model": "taggit.tag", "fields": { "name": "Django", "slug": "django" } },
+  {
+    "model": "taggit.tag",
+    "fields": { "name": "Beginner", "slug": "beginner" }
+  },
+  { "model": "taggit.tag", "fields": { "name": "Guide", "slug": "guide" } },
+  {
+    "model": "taggit.tag",
+    "fields": { "name": "Programming", "slug": "programming" }
+  },
+  {
+    "model": "taggit.tag",
+    "fields": { "name": "REST APIs", "slug": "rest-apis" }
+  },
+  { "model": "taggit.tag", "fields": { "name": "APIs", "slug": "apis" } },
+  {
+    "model": "taggit.taggeditem",
+    "fields": {
+      "tag": ["Future"],
+      "content_type": ["blog", "post"],
+      "object_id": 1
+    }
+  },
+  {
+    "model": "taggit.taggeditem",
+    "fields": {
+      "tag": ["Web Development"],
+      "content_type": ["blog", "post"],
+      "object_id": 1
+    }
+  },
+  {
+    "model": "taggit.taggeditem",
+    "fields": {
+      "tag": ["Technology"],
+      "content_type": ["blog", "post"],
+      "object_id": 1
+    }
+  },
+  {
+    "model": "taggit.taggeditem",
+    "fields": {
+      "tag": ["Django"],
+      "content_type": ["blog", "post"],
+      "object_id": 2
+    }
+  },
+  {
+    "model": "taggit.taggeditem",
+    "fields": {
+      "tag": ["Beginner"],
+      "content_type": ["blog", "post"],
+      "object_id": 2
+    }
+  },
+  {
+    "model": "taggit.taggeditem",
+    "fields": {
+      "tag": ["Guide"],
+      "content_type": ["blog", "post"],
+      "object_id": 2
+    }
+  },
+  {
+    "model": "taggit.taggeditem",
+    "fields": {
+      "tag": ["Programming"],
+      "content_type": ["blog", "post"],
+      "object_id": 2
+    }
+  },
+  {
+    "model": "taggit.taggeditem",
+    "fields": {
+      "tag": ["Technology"],
+      "content_type": ["blog", "post"],
+      "object_id": 2
+    }
+  },
+  {
+    "model": "taggit.taggeditem",
+    "fields": {
+      "tag": ["REST APIs"],
+      "content_type": ["blog", "post"],
+      "object_id": 3
+    }
+  },
+  {
+    "model": "taggit.taggeditem",
+    "fields": {
+      "tag": ["APIs"],
+      "content_type": ["blog", "post"],
+      "object_id": 3
+    }
+  },
+  {
+    "model": "taggit.taggeditem",
+    "fields": {
+      "tag": ["Web Development"],
+      "content_type": ["blog", "post"],
+      "object_id": 3
+    }
+  },
+  {
+    "model": "taggit.taggeditem",
+    "fields": {
+      "tag": ["Programming"],
+      "content_type": ["blog", "post"],
+      "object_id": 3
+    }
+  },
+  {
+    "model": "sites.site",
+    "fields": { "domain": "localhost:8000", "name": "localhost:8000" }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 1,
+    "fields": {
+      "post": 3,
+      "email": "yahialinus@gmail.com",
+      "content": "this was a good overview over the intricacies of REST apis",
+      "created_at": "2024-08-27T14:13:33.636Z",
+      "updated_at": "2024-08-27T14:17:28.494Z",
+      "publish": "2024-08-27T14:13:33Z",
+      "status": "published",
+      "likes_count": 0
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": ["admin", "logentry"],
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": ["admin", "logentry"],
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": ["admin", "logentry"],
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view log entry",
+      "content_type": ["admin", "logentry"],
+      "codename": "view_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add permission",
+      "content_type": ["auth", "permission"],
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change permission",
+      "content_type": ["auth", "permission"],
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": ["auth", "permission"],
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view permission",
+      "content_type": ["auth", "permission"],
+      "codename": "view_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add group",
+      "content_type": ["auth", "group"],
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change group",
+      "content_type": ["auth", "group"],
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete group",
+      "content_type": ["auth", "group"],
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view group",
+      "content_type": ["auth", "group"],
+      "codename": "view_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add user",
+      "content_type": ["auth", "user"],
+      "codename": "add_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change user",
+      "content_type": ["auth", "user"],
+      "codename": "change_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete user",
+      "content_type": ["auth", "user"],
+      "codename": "delete_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view user",
+      "content_type": ["auth", "user"],
+      "codename": "view_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add content type",
+      "content_type": ["contenttypes", "contenttype"],
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change content type",
+      "content_type": ["contenttypes", "contenttype"],
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": ["contenttypes", "contenttype"],
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view content type",
+      "content_type": ["contenttypes", "contenttype"],
+      "codename": "view_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add session",
+      "content_type": ["sessions", "session"],
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change session",
+      "content_type": ["sessions", "session"],
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete session",
+      "content_type": ["sessions", "session"],
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view session",
+      "content_type": ["sessions", "session"],
+      "codename": "view_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add post",
+      "content_type": ["blog", "post"],
+      "codename": "add_post"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change post",
+      "content_type": ["blog", "post"],
+      "codename": "change_post"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete post",
+      "content_type": ["blog", "post"],
+      "codename": "delete_post"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view post",
+      "content_type": ["blog", "post"],
+      "codename": "view_post"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add comment",
+      "content_type": ["blog", "comment"],
+      "codename": "add_comment"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change comment",
+      "content_type": ["blog", "comment"],
+      "codename": "change_comment"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete comment",
+      "content_type": ["blog", "comment"],
+      "codename": "delete_comment"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view comment",
+      "content_type": ["blog", "comment"],
+      "codename": "view_comment"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add tag",
+      "content_type": ["taggit", "tag"],
+      "codename": "add_tag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change tag",
+      "content_type": ["taggit", "tag"],
+      "codename": "change_tag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete tag",
+      "content_type": ["taggit", "tag"],
+      "codename": "delete_tag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view tag",
+      "content_type": ["taggit", "tag"],
+      "codename": "view_tag"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add tagged item",
+      "content_type": ["taggit", "taggeditem"],
+      "codename": "add_taggeditem"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change tagged item",
+      "content_type": ["taggit", "taggeditem"],
+      "codename": "change_taggeditem"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete tagged item",
+      "content_type": ["taggit", "taggeditem"],
+      "codename": "delete_taggeditem"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view tagged item",
+      "content_type": ["taggit", "taggeditem"],
+      "codename": "view_taggeditem"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can add site",
+      "content_type": ["sites", "site"],
+      "codename": "add_site"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can change site",
+      "content_type": ["sites", "site"],
+      "codename": "change_site"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can delete site",
+      "content_type": ["sites", "site"],
+      "codename": "delete_site"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "name": "Can view site",
+      "content_type": ["sites", "site"],
+      "codename": "view_site"
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$870000$ZxWNqi2mlQyD45VAlC8ayt$oFokN1Z/AqRQ5bhfHMrTYV8jKDZ8+2Z6PdejreWS+IM=",
+      "last_login": "2024-08-27T11:57:44.859Z",
+      "is_superuser": true,
+      "username": "yahia",
+      "first_name": "",
+      "last_name": "",
+      "email": "yahialinus@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-08-27T11:56:06.069Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "password": "pbkdf2_sha256$870000$yKcWEQBuwIAb983VZlLyfU$9DJGmgyypZOmVz3bFBxEYDqokT1M8Oz9I2DliBEH6fA=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "admin@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-08-27T12:01:06.052Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 2,
+    "fields": {
+      "title": "A Beginner's Guide to Django",
+      "content": "\nDjango is a high-level Python web framework that encourages rapid development and clean, pragmatic design. In this guide, we'll cover the basics of getting started with Django.\n\n1. **Installation**: To install Django, you can use pip, the Python package installer. Simply run `pip install django` in your terminal.\n\n2. **Creating a Project**: Once Django is installed, you can create a new project by running `django-admin startproject myproject`. This will generate the necessary files and directories for your project.\n\n3. **Creating an App**: In Django, a project can contain multiple apps. To create a new app, navigate to your project directory and run `python manage.py startapp myapp`.\n\n4. **Models and Migrations**: Django uses models to define the structure of your database. After defining your models, you can create and apply migrations to update your database schema.\n\n5. **Views and Templates**: Views handle the logic for your application, while templates define the HTML structure. Together, they allow you to create dynamic web pages.\n\n6. **Admin Interface**: Django comes with a built-in admin interface that allows you to manage your application's data. You can customize the admin interface to suit your needs.\n\nBy following these steps, you'll be well on your way to building powerful web applications with Django. Happy coding!\n",
+      "created_at": "2024-08-27T12:03:37.110Z",
+      "updated_at": "2024-08-27T12:03:37.113Z",
+      "publish": "2024-08-27T12:03:37.110Z",
+      "author": ["admin"],
+      "slug": "beginners-guide-to-django",
+      "status": "published"
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 3,
+    "fields": {
+      "title": "Understanding REST APIs",
+      "content": "\nREST (Representational State Transfer) is an architectural style for designing networked applications. In this post, we'll explore the key concepts and benefits of REST APIs.\n\n1. **Statelessness**: REST APIs are stateless, meaning each request from a client to a server must contain all the information needed to understand and process the request. This simplifies the server design and improves scalability.\n\n2. **Resource-Based**: In REST, resources are identified by URLs. Each resource can be manipulated using standard HTTP methods such as GET, POST, PUT, and DELETE.\n\n3. **Representation**: Resources can have multiple representations, such as JSON, XML, or HTML. Clients can request a specific representation using the `Accept` header.\n\n4. **Uniform Interface**: REST APIs follow a uniform interface, which simplifies the interaction between clients and servers. This includes using standard HTTP methods and status codes.\n\n5. **HATEOAS**: Hypermedia as the Engine of Application State (HATEOAS) is a constraint of REST that allows clients to dynamically navigate resources through hyperlinks.\n\nBy understanding these principles, you can design and implement robust REST APIs that are easy to use and maintain. Stay tuned for more in-depth tutorials on building REST APIs with Django!\n",
+      "created_at": "2024-08-27T12:03:37.482Z",
+      "updated_at": "2024-08-27T12:03:37.482Z",
+      "publish": "2024-08-27T12:03:37.479Z",
+      "author": ["admin"],
+      "slug": "understanding-rest-apis",
+      "status": "published"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+      "action_time": "2024-08-27T14:17:28.496Z",
+      "user": ["yahia"],
+      "content_type": ["blog", "comment"],
+      "object_id": "1",
+      "object_repr": "this was a good",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Likes count\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+      "action_time": "2024-08-28T16:38:27.368Z",
+      "user": ["yahia"],
+      "content_type": ["sites", "site"],
+      "object_id": "1",
+      "object_repr": "http://127.0.0.1:8000/",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Domain name\", \"Display name\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+      "action_time": "2024-08-28T16:39:42.938Z",
+      "user": ["yahia"],
+      "content_type": ["sites", "site"],
+      "object_id": "1",
+      "object_repr": "localhost",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Domain name\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+      "action_time": "2024-08-28T16:40:44.133Z",
+      "user": ["yahia"],
+      "content_type": ["sites", "site"],
+      "object_id": "1",
+      "object_repr": "localhost:8000",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Domain name\", \"Display name\"]}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+      "action_time": "2024-08-28T16:42:32.485Z",
+      "user": ["yahia"],
+      "content_type": ["sites", "site"],
+      "object_id": "1",
+      "object_repr": "localhost:8000",
+      "action_flag": 2,
+      "change_message": "[]"
+    }
+  }
+]

@@ -1,3 +1,15 @@
 {
-    "python.analysis.typeCheckingMode": "basic"
+    "python.analysis.typeCheckingMode": "basic",
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "blog-cnx",
+            "group": "blog-grp",
+            "database": "blog",
+            "username": "admin"
+        }
+    ]
 }

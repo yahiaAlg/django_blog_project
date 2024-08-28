@@ -7,18 +7,20 @@ from django.shortcuts import get_object_or_404
 from django.core.mail import send_mail
 from django.conf import settings
 from .forms import ContactForm
-
+from django.http import HttpRequest
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import *
 
 
 # Create your views here
-def post_list(request, tag_slug=None):
+def post_list(request:HttpRequest, tag_slug=None):
     posts = Post.published.all()
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
         posts = Post.published.filter(tags__in=[tag])
-
+    if request.GET.get("q"):
+        query = request.GET.get("q")
+        posts = Post.published.filter(title__icontains=query)
     paginator = Paginator(posts, 6)
     page = request.GET.get("page", 1)
     try:
@@ -45,7 +47,7 @@ from .models import Comment
 
 
 @require_POST
-def like_comment(request, comment_id):
+def like_comment(request:HttpRequest, comment_id):
     comment = Comment.objects.get(id=comment_id)
     comment.likes_count += 1
     comment.save()
@@ -53,7 +55,7 @@ def like_comment(request, comment_id):
 
 
 @require_POST
-def dislike_comment(request, comment_id):
+def dislike_comment(request:HttpRequest, comment_id):
     comment = Comment.objects.get(id=comment_id)
     comment.delete()
     return JsonResponse({"success": True})
@@ -63,7 +65,7 @@ from .forms import CommentForm
 from django.db.models import Count
 
 
-def post_detail(request, year, month, day, slug):
+def post_detail(request:HttpRequest, year, month, day, slug):
     post: Post = get_object_or_404(
         Post.published,
         publish__year=year,
@@ -96,7 +98,7 @@ def post_detail(request, year, month, day, slug):
     )
 
 
-def share_post(request, pk):
+def share_post(request:HttpRequest, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
         sender_email = request.POST["sender_email"]
@@ -137,3 +139,4 @@ def contact(request):
     else:
         form = ContactForm()
     return render(request, "blog/contact.html", {"form": form})
+

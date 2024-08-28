@@ -5,3 +5,4 @@ whitenoise[brotli]
 django_bootstrap5
 markdown
 django-taggit
+psycopg2-binary

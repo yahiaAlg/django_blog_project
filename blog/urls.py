@@ -1,5 +1,10 @@
 from django.urls import path
 from . import views
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import PostSitemap
+from .feed import BlogFeed
+
+sitemaps = {"posts": PostSitemap}
 
 
 app_name = "blog"
@@ -21,4 +26,11 @@ urlpatterns = [
     path("share_post/<int:pk>/", views.share_post, name="share_post"),
     path("about", views.about, name="about"),
     path("contact", views.contact, name="contact"),
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap"),
+    path(
+        "feed/",
+        BlogFeed(),
+        name="post_feed",
+    ),
+    path("search/", views.post_list, name="post_search")
 ]
