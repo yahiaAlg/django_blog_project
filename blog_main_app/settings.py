@@ -25,7 +25,11 @@ SECRET_KEY = "django-insecure-xg3d7cn&k0(oj3-ws&rmv92$do#u4_%byaau1#qoublz*w*$n3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "*",
+    "https://django-yahia-blog-project.onrender.com/",
+    "http://http://127.0.0.1:8000",
+]
 
 SITE_ID = 1
 
