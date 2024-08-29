@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -148,3 +149,12 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "yahialinus21alg@gmail.com"
 EMAIL_HOST_PASSWORD = "gxto expi xxup fwlk"
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+# static files with whitenoise
+STORAGES = {
+    # ...
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
