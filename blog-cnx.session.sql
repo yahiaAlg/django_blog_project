@@ -1,0 +1,1 @@
+SELECT title FROM blog_post WHERE title LIKE '%beg%';
